@@ -1,3 +1,9 @@
+xkeyboard-config (2.33-1deepin1) unstable; urgency=medium
+
+  * change the Chinese translation of 'Taiwanese'
+
+ -- zsien <quezhiyong@uniontech.com>  Tue, 14 Feb 2023 14:40:14 +0800
+
 xkeyboard-config (2.33-1) unstable; urgency=medium
 
   * New upstream release. (Closes: #980978)
