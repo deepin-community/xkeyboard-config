@@ -1,3 +1,9 @@
+xkeyboard-config (2.33-1deepin2) unstable; urgency=medium
+
+  * remove keyboard layout of chinese taiwan.
+
+ -- LiChengGang <lichenggang@uniontech.com>  Mon, 08 May 2023 11:09:51 +0800
+
 xkeyboard-config (2.33-1deepin1) unstable; urgency=medium
 
   * change the Chinese translation of 'Taiwanese'
