@@ -3,19 +3,18 @@ Date: Fri, 5 May 2023 12:50:19 +0800
 Subject: remove keyboard layout of chinese taiwan
 
 ---
- rules/base.xml      | 48 ---------------------------------
- symbols/Makefile.am |  3 +--
+ rules/base.xml      | 51 -----------------------------------
  symbols/sun_vndr/tw | 60 -----------------------------------------
  symbols/tw          | 78 -----------------------------------------------------
- 4 files changed, 1 insertion(+), 188 deletions(-)
+ 3 files changed, 189 deletions(-)
  delete mode 100644 symbols/sun_vndr/tw
  delete mode 100644 symbols/tw
 
 diff --git a/rules/base.xml b/rules/base.xml
-index 62f4416..43e0df0 100644
+index dca28e1..75280d6 100644
 --- a/rules/base.xml
 +++ b/rules/base.xml
-@@ -5500,54 +5500,6 @@
+@@ -5890,57 +5890,6 @@
          </variant>
        </variantList>
      </layout>
@@ -25,6 +24,9 @@ index 62f4416..43e0df0 100644
 -        <!-- Keyboard indicator for Taiwanese layouts -->
 -        <shortDescription>zh</shortDescription>
 -        <description>Taiwanese</description>
+-        <countryList>
+-          <iso3166Id>TW</iso3166Id>
+-        </countryList>
 -        <languageList>
 -          <iso639Id>fox</iso639Id>
 -        </languageList>
@@ -70,27 +72,6 @@ index 62f4416..43e0df0 100644
      <layout>
        <configItem>
          <name>ua</name>
-diff --git a/symbols/Makefile.am b/symbols/Makefile.am
-index 28d4f7b..8b09d59 100644
---- a/symbols/Makefile.am
-+++ b/symbols/Makefile.am
-@@ -29,7 +29,7 @@ dist_symbols_DATA = \
-     se si sk sn \
-     sy th \
-     terminate tg \
--    tj tm tr trans tw tz \
-+    tj tm tr trans tz \
-     ua us uz vn \
-     za \
-     altwin capslock compose ctrl empty eurosign rupeesign group inet \
-@@ -117,7 +117,6 @@ dist_sun_DATA = \
-  sun_vndr/sk \
-  sun_vndr/solaris \
-  sun_vndr/tr \
-- sun_vndr/tw \
-  sun_vndr/ua \
-  sun_vndr/us
- 
 diff --git a/symbols/sun_vndr/tw b/symbols/sun_vndr/tw
 deleted file mode 100644
 index 2296ad1..0000000
@@ -159,7 +140,7 @@ index 2296ad1..0000000
 -};
 diff --git a/symbols/tw b/symbols/tw
 deleted file mode 100644
-index 5395d6d..0000000
+index bb7d2b6..0000000
 --- a/symbols/tw
 +++ /dev/null
 @@ -1,78 +0,0 @@
@@ -191,7 +172,7 @@ index 5395d6d..0000000
 -    key <AD06> { [	   y,          Y,         U1E73,            U1E72 ] };
 -    key <AD07> { [	   u,          U,         U0289,            U0244 ] };
 -    key <AD08> { [	   i,          I,         U0268,            U0197 ] };
--    key <AD09> { [	   o,          O,        oslash,         Ooblique ] };
+-    key <AD09> { [	   o,          O,        oslash,           Oslash ] };
 -
 -    key <AC02> { [	   s,          S,        ssharp,            U1E9E ] };
 -    key <AC03> { [	   d,          D,         U1E0F,            U1E0E ] };

@@ -41,7 +41,6 @@ rules_compat_generated = []
 if get_option('compat-rules')
   # non-generated compat parts
   parts += [
-      'compat/0003-lists.part',
       'compat/0028-lv_c.part',
       'compat/0029-l1v1_c.part',
       'compat/0030-l2v2_c.part',
@@ -105,7 +104,6 @@ if get_option('compat-rules')
 endif # compat-rules
 
 merge_py = find_program('merge.py')
-perl = find_program('perl')
 xml2lst = find_program('xml2lst.pl')
 foreach ruleset: ['base', 'evdev']
     # generate the "evdev" and "base" rules files

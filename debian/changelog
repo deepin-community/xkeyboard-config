@@ -1,3 +1,19 @@
+xkeyboard-config (2.38-2deepin1) unstable; urgency=medium
+
+  [ Diederik de Haas ]
+  * patches: Rebase docs.diff onto 829b483a (MR 6, closes: 1027875)
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster (oldstable):
+    + Build-Depends-Indep: Drop versioned constraint on xutils-dev.
+    + xkb-data: Drop versioned constraint on libx11-6 in Breaks.
+
+  [ Timo Aaltonen ]
+  * New upstream release.
+  * watch: Use macros for the upstream file/version/extension.
+
+ -- zsien <quezhiyong@deepin.org>  Tue, 05 Sep 2023 16:18:34 +0800
+
 xkeyboard-config (2.33-1deepin2) unstable; urgency=medium
 
   * remove keyboard layout of chinese taiwan.
