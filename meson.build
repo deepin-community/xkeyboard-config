@@ -1,7 +1,7 @@
 project('xkeyboard-config',
-        version: '2.38',
+        version: '2.42',
         license: 'MIT/Expat',
-        meson_version: '>= 0.54.0')
+        meson_version: '>= 0.56.0')
 
 dir_data        = join_paths(get_option('prefix'), get_option('datadir'))
 dir_xkb_base    = join_paths(dir_data, 'X11', 'xkb')
@@ -25,12 +25,27 @@ pkgconfig.generate(
     dataonly: true,
 )
 
-# KcGST only need to be installed as-is
-foreach dir: ['compat', 'geometry', 'keycodes', 'symbols', 'types']
+# KcG.T only need to be installed as-is
+foreach dir: ['compat', 'geometry', 'keycodes', 'types']
     install_subdir(dir,
-                   exclude_files: ['Makefile.am'],
+                   exclude_files: ['custom'],
                    install_dir: dir_xkb_base)
 endforeach
+
+# symbols have a few symlinks that we need to skip
+symlinks = [
+    'caps',
+    'esperanto',
+    'grp',
+    'japan',
+    'korean',
+    'lv2',
+    'lv3',
+    'lv5',
+]
+install_subdir('symbols',
+               exclude_files: symlinks,
+               install_dir: dir_xkb_base)
 
 # Rules are a bit more complicated
 subdir('rules')
@@ -56,6 +71,36 @@ if xsltproc.found()
                           install:true,
                           install_dir: dir_man7)
 
+  verify_group_names = find_program('tests/verify-group-names.sh')
+  test('verify group names', verify_group_names)
+endif
+
+# pytest suite
+pymod = import('python')
+python = pymod.find_installation('python3',
+                                 modules: ['pytest'],
+                                 required: false)
+pytest = find_program('pytest-3', 'pytest', required: false)
+enable_pytest = python.found() and pytest.found()
+if enable_pytest
+    pytest_args = ['--verbose', '--log-level=DEBUG']
+    # use pytest xdist if available, it really speeds up the tests cases
+    optional_python_modules = ['xdist']
+    if pymod.find_installation('python3', modules: optional_python_modules, required: false).found()
+        pytest_args += ['-n', 'auto']
+    endif
+
+    # copy our data files over to the build directory so we can use the
+    # builddir as XKB_CONFIG_ROOT
+    foreach dir: ['compat', 'geometry', 'keycodes', 'symbols', 'types']
+        run_command('tests/copydir.sh', dir, check: true)
+    endforeach
+
+    test('pytest', pytest,
+         args: pytest_args,
+         env: ['XKB_CONFIG_ROOT=@0@'.format(meson.build_root())],
+         workdir: meson.project_source_root(),
+         timeout: 60)
 endif
 
 subdir('po')
