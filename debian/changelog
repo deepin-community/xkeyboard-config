@@ -1,3 +1,10 @@
+xkeyboard-config (2.42-1deepin1) unstable; urgency=medium
+
+  * Apply patches:
+    - chore: 删除中国台湾少数民族键盘
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 16 Mar 2026 16:14:02 +0800
+
 xkeyboard-config (2.42-1) unstable; urgency=medium
 
   * New upstream release. (Closes: #1073540)
