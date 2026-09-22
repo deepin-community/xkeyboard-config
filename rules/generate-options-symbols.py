@@ -6,14 +6,21 @@
 # mapping compatible with the rules format. See the meson.build file for how this is used.
 
 from __future__ import annotations
+
 import argparse
-from enum import StrEnum, unique
 import sys
 import xml.etree.ElementTree as ET
-
-from typing import Generator, Iterable
+from collections.abc import Generator, Iterable
 from dataclasses import dataclass
+from enum import unique
 from pathlib import Path
+
+try:
+    # Available from Python 3.11
+    from enum import StrEnum
+except ImportError:
+    # Fallback to external package
+    from strenum import StrEnum
 
 
 def error(msg):
@@ -245,9 +252,9 @@ def main():
     )
 
     def check_and_map(directive: DirectiveSet) -> Directive:
-        assert (
-            not directive.is_empty
-        ), f"Option {directive.option} does not resolve to any section"
+        assert not directive.is_empty, (
+            f"Option {directive.option} does not resolve to any section"
+        )
 
         return getattr(directive, rules_section.name)
 
