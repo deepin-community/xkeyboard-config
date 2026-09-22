@@ -9,9 +9,11 @@ Build-Depends:
 Build-Depends-Indep:
  gawk,
  gettext-base,
+ libxkbcommon-tools,
  libxml-parser-perl,
- x11-xkb-utils,
  libglib2.0-dev,
+ python3-yaml,
+ x11-xkb-utils,
  xsltproc,
  xutils-dev,
 Standards-Version: 4.5.0

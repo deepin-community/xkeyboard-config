@@ -1,15 +1,32 @@
-xkeyboard-config (2.42-1deepin2) unstable; urgency=medium
+xkeyboard-config (2.46-2) unstable; urgency=medium
 
-  * Rebuild with LTO enabled (dpkg vendor feature optimize/lto).
+  * Migrate /usr/lib/X11/xkb dir to symlink. (Closes: #1122650)
 
- -- tunaichao <tunaichao@uniontech.com>  Mon, 14 Sep 2026 09:20:52 +0800
+ -- Timo Aaltonen <tjaalton@debian.org>  Thu, 18 Dec 2025 15:35:35 +0200
 
-xkeyboard-config (2.42-1deepin1) unstable; urgency=medium
+xkeyboard-config (2.46-1) unstable; urgency=medium
 
-  * Apply patches:
-    - chore: 删除中国台湾少数民族键盘
+  [ Dylan Aïssi ]
+  * Team upload.
+  * debian/copyright: Convert to machine-readable format
 
- -- Tianyu Chen <sweetyfish@deepin.org>  Mon, 16 Mar 2026 16:14:02 +0800
+  [ Timo Aaltonen ]
+  * New upstream release.
+  * rules: Drop obsolete xkb-base build-option.
+  * watch: Updated to version 5.
+  * source: Switch to format 3.0 (quilt).
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Thu, 11 Dec 2025 16:47:05 +0200
+
+xkeyboard-config (2.44-1) experimental; urgency=medium
+
+  * New upstream release. (Closes: #1091993)
+  * copyright: Fix a typo in the URL. (Closes: #1070293)
+  * rules: Enable non-latin-layouts-list. (Closes: #1085452)
+    - control: Add libxkbcommon-tools and python3-yaml to build-depends.
+  * rules: Drop dh_clean override, unnecessary.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Mon, 28 Jul 2025 17:41:00 +0300
 
 xkeyboard-config (2.42-1) unstable; urgency=medium
 
